@@ -1,0 +1,56 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reading Vocabulary Maker</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div>
+      <h1>Reading Vocabulary Maker</h1>
+      <p>독해 복습형 단어장 · 단어 시험지 · 정답 해설지 생성기</p>
+    </div>
+    <span class="badge">Teacher Tool</span>
+  </header>
+
+  <section class="panel form-panel">
+    <div class="grid">
+      <label>시험지 제목<input id="title" placeholder="예: Hackers TEPS Reading - Chapter 05"></label>
+      <label>PDF 페이지 범위<input id="pageRange" placeholder="예: 94-113 또는 94,96-100"></label>
+      <label>난이도
+        <select id="difficulty"><option value="easier">더 쉽게</option><option value="normal" selected>현재 수준</option><option value="harder">더 어렵게</option></select>
+      </label>
+    </div>
+    <label class="filebox">독해 자료 PDF / 이미지
+      <input id="files" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp" multiple>
+    </label>
+    <div class="actions"><button id="generate" class="primary">분석 및 생성</button><span id="status"></span></div>
+  </section>
+
+  <section id="result" class="hidden">
+    <div class="toolbar panel">
+      <div><strong id="detected"></strong><span id="note"></span></div>
+      <div class="actions">
+        <button id="shuffle">시험 순서 다시 섞기</button>
+        <a href="/download/vocab">단어장 Word</a>
+        <a href="/download/test">시험지 Word</a>
+        <a href="/download/answer">정답·해설 Word</a>
+      </div>
+    </div>
+
+    <div class="tabs">
+      <button data-tab="vocab" class="active">단어장</button>
+      <button data-tab="test">시험지</button>
+      <button data-tab="answer">정답·해설</button>
+    </div>
+
+    <div id="vocab" class="tab panel"></div>
+    <div id="test" class="tab panel hidden"></div>
+    <div id="answer" class="tab panel hidden"></div>
+  </section>
+</div>
+<script src="/static/app.js"></script>
+</body></html>
